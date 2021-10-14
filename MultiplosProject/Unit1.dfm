@@ -32,7 +32,7 @@ object Form1: TForm1
     Top = 54
     Width = 405
     Height = 21
-    Caption = 'Escolha at'#233' onde voc'#234' que achar os multiplos de 3 e 5'
+    Caption = 'Escolha at'#233' onde voc'#234' quer achar os multiplos de 3 e 5'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -51,6 +51,103 @@ object Form1: TForm1
     Font.Height = -15
     Font.Name = 'Times New Roman'
     Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 160
+    Top = 86
+    Width = 56
+    Height = 17
+    Caption = 'Multiplos:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 246
+    Top = 86
+    Width = 32
+    Height = 17
+    Caption = 'De 3:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 310
+    Top = 86
+    Width = 32
+    Height = 17
+    Caption = 'De 5:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 367
+    Top = 86
+    Width = 54
+    Height = 17
+    Caption = 'De 5 e 3:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object counterThree: TLabel
+    Left = 246
+    Top = 109
+    Width = 32
+    Height = 22
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '0'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object counterFive: TLabel
+    Left = 310
+    Top = 109
+    Width = 32
+    Height = 22
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '0'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object counterFT: TLabel
+    Left = 367
+    Top = 109
+    Width = 54
+    Height = 22
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '0'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object untilValueEdit: TEdit

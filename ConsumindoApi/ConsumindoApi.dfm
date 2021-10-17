@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Consumindo API'
-  ClientHeight = 747
+  ClientHeight = 799
   ClientWidth = 453
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -74,6 +74,15 @@ object Form1: TForm1
     TabOrder = 2
     OnClick = getButtonClick
   end
+  object clearButton: TButton
+    Left = 48
+    Top = 728
+    Width = 356
+    Height = 41
+    Caption = 'LIMPAR CAMPOS'
+    TabOrder = 3
+    OnClick = clearButtonClick
+  end
   object RESTClient1: TRESTClient
     BaseURL = 'https://www.receitaws.com.br/v1/cnpj'
     Params = <>
@@ -84,11 +93,11 @@ object Form1: TForm1
     Client = RESTClient1
     Params = <>
     Response = RESTResponse1
-    Left = 368
-    Top = 96
+    Left = 352
+    Top = 112
   end
   object RESTResponse1: TRESTResponse
-    Left = 416
-    Top = 168
+    Left = 408
+    Top = 56
   end
 end

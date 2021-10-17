@@ -30,7 +30,7 @@ object Form1: TForm1
   object Label2: TLabel
     Left = 16
     Top = 54
-    Width = 405
+    Width = 411
     Height = 21
     Caption = 'Escolha at'#233' onde voc'#234' quer achar os multiplos de 3 e 5'
     Font.Charset = ANSI_CHARSET

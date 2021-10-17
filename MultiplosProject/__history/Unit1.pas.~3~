@@ -48,9 +48,6 @@ var
   multiplies: TArray<String>;
   I: Integer;
 begin
-  cF := 0;
-  cT := 0;
-  cTF := 0;
   for I := 1 to n do
     begin
       if ((I mod 3) = 0) AND ((I mod 5) = 0) then

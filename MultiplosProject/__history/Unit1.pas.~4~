@@ -35,9 +35,9 @@ var
   cF: Integer;
   cTF: Integer;
 const
-  FIVE_THREE : String = 'FIZZBUZZ';
-  ONLY_THREE : String = 'FIZZ';
-  ONLY_FIVE : String = 'BUZZ';
+  FIVE_THREE : String = ' - FIZZBUZZ';
+  ONLY_THREE : String = ' - FIZZ';
+  ONLY_FIVE : String = ' - BUZZ';
 
 implementation
 
@@ -56,26 +56,21 @@ begin
       if ((I mod 3) = 0) AND ((I mod 5) = 0) then
         begin
           SetLength(multiplies, Length(multiplies)+1);
-          multiplies[High(multiplies)] := FIVE_THREE;
+          multiplies[High(multiplies)] := IntToStr(I) + FIVE_THREE;
           cTF := cTF + 1;
         end
       else if ((I mod 3) = 0) then
         begin
           SetLength(multiplies, Length(multiplies)+1);
-          multiplies[High(multiplies)] := ONLY_THREE;
+          multiplies[High(multiplies)] := IntToStr(I) + ONLY_THREE;
           cT := cT + 1;
         end
       else if ((I mod 5) = 0) then
         begin
           SetLength(multiplies, Length(multiplies)+1);
-          multiplies[High(multiplies)] := ONLY_FIVE;
+          multiplies[High(multiplies)] := IntToStr(I) + ONLY_FIVE;
           cF := cF + 1;
         end
-      else
-        begin
-          SetLength(multiplies, Length(multiplies)+1);
-          multiplies[High(multiplies)] := IntToStr(I);
-        end;
     end;
     Result := multiplies;
 end;

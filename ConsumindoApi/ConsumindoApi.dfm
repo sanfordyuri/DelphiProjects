@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Consumindo API'
-  ClientHeight = 799
-  ClientWidth = 453
+  ClientHeight = 826
+  ClientWidth = 684
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,8 +14,8 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 48
-    Top = 29
+    Left = 168
+    Top = 8
     Width = 356
     Height = 32
     Caption = 'Consumindo API com Delphi'
@@ -27,9 +27,9 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 120
+    Left = 216
     Top = 84
-    Width = 209
+    Width = 284
     Height = 22
     Alignment = taCenter
     AutoSize = False
@@ -42,9 +42,9 @@ object Form1: TForm1
     ParentFont = False
   end
   object cnpjEdit: TEdit
-    Left = 120
+    Left = 216
     Top = 112
-    Width = 209
+    Width = 284
     Height = 29
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -55,19 +55,25 @@ object Form1: TForm1
     TabOrder = 0
   end
   object Memo1: TMemo
-    Left = 48
+    Left = 24
     Top = 160
-    Width = 356
-    Height = 473
+    Width = 641
+    Height = 513
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
     Lines.Strings = (
       'Nenhum dado at'#233' o momento')
+    ParentFont = False
     ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 1
   end
   object getButton: TButton
-    Left = 48
-    Top = 664
+    Left = 168
+    Top = 688
     Width = 356
     Height = 41
     Caption = 'BUSCAR DADOS'
@@ -75,8 +81,8 @@ object Form1: TForm1
     OnClick = getButtonClick
   end
   object clearButton: TButton
-    Left = 48
-    Top = 728
+    Left = 168
+    Top = 752
     Width = 356
     Height = 41
     Caption = 'LIMPAR CAMPOS'
@@ -86,18 +92,18 @@ object Form1: TForm1
   object RESTClient1: TRESTClient
     BaseURL = 'https://www.receitaws.com.br/v1/cnpj'
     Params = <>
-    Left = 32
-    Top = 96
+    Left = 624
+    Top = 16
   end
   object RESTRequest1: TRESTRequest
     Client = RESTClient1
     Params = <>
     Response = RESTResponse1
-    Left = 352
-    Top = 112
+    Left = 568
+    Top = 16
   end
   object RESTResponse1: TRESTResponse
-    Left = 408
-    Top = 56
+    Left = 528
+    Top = 16
   end
 end

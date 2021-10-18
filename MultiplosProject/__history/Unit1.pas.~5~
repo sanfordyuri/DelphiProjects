@@ -53,24 +53,27 @@ begin
   cTF := 0;
   for I := 1 to n do
     begin
-      SetLength(multiplies, Length(multiplies)+1);
       if ((I mod 3) = 0) AND ((I mod 5) = 0) then
         begin
+          SetLength(multiplies, Length(multiplies)+1);
           multiplies[High(multiplies)] := FIVE_THREE;
           cTF := cTF + 1;
         end
       else if ((I mod 3) = 0) then
         begin
+          SetLength(multiplies, Length(multiplies)+1);
           multiplies[High(multiplies)] := ONLY_THREE;
           cT := cT + 1;
         end
       else if ((I mod 5) = 0) then
         begin
+          SetLength(multiplies, Length(multiplies)+1);
           multiplies[High(multiplies)] := ONLY_FIVE;
           cF := cF + 1;
         end
       else
         begin
+          SetLength(multiplies, Length(multiplies)+1);
           multiplies[High(multiplies)] := IntToStr(I);
         end;
     end;

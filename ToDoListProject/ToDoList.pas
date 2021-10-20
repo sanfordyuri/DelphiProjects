@@ -80,11 +80,13 @@ begin
       ShowMessage('This task has be finished already');
     end
   else
-    counterTaskDone.Caption :=  (StrToInt(counterTaskDone.Caption) + 1).ToString;
+  begin
+        counterTaskDone.Caption :=  (StrToInt(counterTaskDone.Caption) + 1).ToString;
     taskList.Items[taskList.ItemIndex] :=  taskList.Items[taskList.ItemIndex] + ' [✓]';
 
     if StrToInt(counterTaskDone.Caption) = StrToInt(counterTotalTask.Caption) then
       ShowMessage('Congratulations! You finished all your tasks');
+  end;
 end;
 
 procedure TForm2.removeTaskButtonClick(Sender: TObject);

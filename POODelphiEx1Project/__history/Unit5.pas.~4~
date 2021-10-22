@@ -1,0 +1,57 @@
+unit Unit5;
+
+interface
+
+uses
+    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+    System.Classes, Vcl.Graphics,
+    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, MinhasClasses;
+
+type
+    TForm5 = class(TForm)
+        Label1: TLabel;
+        Label2: TLabel;
+        saldoLabel: TLabel;
+        valorEdit: TEdit;
+        Label3: TLabel;
+        depositarButton: TButton;
+        sacarButton: TButton;
+    Label4: TLabel;
+    nomeDoTitularLabel: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    private
+        { Private declarations }
+    public
+        { Public declarations }
+    end;
+
+var
+    Conta: TConta;
+    Form5: TForm5;
+    nomeDoTitular:String;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm5.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Conta.Free;
+end;
+
+procedure TForm5.FormShow(Sender: TObject);
+
+begin
+  Conta := nil;
+  try
+    Conta := TConta.Create;
+    Conta.NomeDoTitular := nomeDoTitular;
+    nomeDoTitularLabel.Caption := Conta.NomeDoTitular;
+  finally
+    Conta.Free;
+  end;
+
+end;
+
+end.

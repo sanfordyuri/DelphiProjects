@@ -1,0 +1,43 @@
+unit Unit5;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, REST.Types, REST.Client,
+  Data.Bind.Components, Data.Bind.ObjectScope, Vcl.StdCtrls;
+
+type
+  TForm5 = class(TForm)
+    Label1: TLabel;
+    userEdit: TEdit;
+    label2: TLabel;
+    buscarButton: TButton;
+    RESTClient1: TRESTClient;
+    RESTRequest1: TRESTRequest;
+    RESTResponse1: TRESTResponse;
+    procedure buscarButtonClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm5.buscarButtonClick(Sender: TObject);
+var
+  user:String;
+const
+  URL:String='https://api.github.com/users/';
+begin
+  user := userEdit.Text;
+  RESTClient1.BaseURL := URL + user;
+end;
+
+end.

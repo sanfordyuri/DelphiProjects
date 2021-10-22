@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/10/21 17:27:30.000.458,=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit5.pas</Transaction>
+    <Transaction>2021/10/21 17:28:06.000.439,E:\Delphi-Projects\POODelphiEx1Project\Unit5.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit5.pas</Transaction>
+    <Transaction>2021/10/21 17:28:06.000.439,E:\Delphi-Projects\POODelphiEx1Project\Unit5.dfm=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit5.dfm</Transaction>
+    <Transaction>2021/10/21 17:29:07.000.815,=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/10/21 17:29:25.000.395,C:\Users\55859\Documents\Embarcadero\Studio\Projects\MinhasClasses.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/10/21 18:07:56.000.168,=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/10/21 18:08:05.000.270,C:\Users\55859\Documents\Embarcadero\Studio\Projects\Autenticacao.dfm=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.dfm</Transaction>
+    <Transaction>2021/10/21 18:08:05.000.270,C:\Users\55859\Documents\Embarcadero\Studio\Projects\Autenticacao.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/10/21 18:57:16.000.669,E:\Delphi-Projects\POODelphiEx1Project\Autenticacao.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Autenticacao.pas</Transaction>
+    <Transaction>2021/10/21 18:57:16.000.669,E:\Delphi-Projects\POODelphiEx1Project\Autenticacao.dfm=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Autenticacao.dfm</Transaction>
+    <Transaction>2021/10/21 18:57:17.000.602,E:\Delphi-Projects\POODelphiEx1Project\MinhasClasses.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\MinhasClasses.pas</Transaction>
+    <Transaction>2021/10/21 18:57:18.000.049,E:\Delphi-Projects\POODelphiEx1Project\Project2.dproj=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2021/10/21 21:19:58.507,E:\Delphi-Projects\POODelphiEx1Project\Project2.dproj=E:\Delphi-Projects\POODelphiEx1Project\Project2.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

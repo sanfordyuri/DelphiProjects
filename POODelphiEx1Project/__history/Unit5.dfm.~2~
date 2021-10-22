@@ -1,0 +1,125 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  Caption = 'Form5'
+  ClientHeight = 514
+  ClientWidth = 392
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 64
+    Top = 8
+    Width = 263
+    Height = 40
+    Caption = 'Sistema de Banco'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -35
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 136
+    Top = 144
+    Width = 120
+    Height = 31
+    Caption = 'Seu saldo:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -27
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object saldoLabel: TLabel
+    Left = 136
+    Top = 181
+    Width = 120
+    Height = 28
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'R$ 0.00,00'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 136
+    Top = 235
+    Width = 126
+    Height = 31
+    Caption = 'Valor(R$):'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -27
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 24
+    Top = 80
+    Width = 164
+    Height = 31
+    Caption = 'Bem vindo(a) '
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -27
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object nomeDoTitularLabel: TLabel
+    Left = 194
+    Top = 80
+    Width = 7
+    Height = 31
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -27
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object valorEdit: TEdit
+    Left = 136
+    Top = 272
+    Width = 126
+    Height = 35
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+  end
+  object depositarButton: TButton
+    Left = 125
+    Top = 360
+    Width = 153
+    Height = 41
+    Caption = 'DEPOSITAR'
+    TabOrder = 1
+  end
+  object sacarButton: TButton
+    Left = 125
+    Top = 416
+    Width = 153
+    Height = 41
+    Caption = 'SACAR'
+    TabOrder = 2
+  end
+end

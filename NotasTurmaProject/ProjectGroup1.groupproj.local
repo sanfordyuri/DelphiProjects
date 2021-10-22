@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions/>
+  <Transactions>
+    <Transaction>2021/10/20 18:25:54.173,E:\Delphi-Projects\NotasTurmaProject\ProjectGroup1.groupproj=C:\Users\55859\Documents\Embarcadero\Studio\Projects\ProjectGroup1.groupproj</Transaction>
+  </Transactions>
   <Default.Personality>
-    <Projects ActiveProject="C:\Users\55859\Documents\Embarcadero\Studio\Projects\Project4.dproj"/>
+    <Projects ActiveProject="E:\Delphi-Projects\NotasTurmaProject\Project4.dproj"/>
   </Default.Personality>
 </BorlandProject>

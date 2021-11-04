@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/11/02 14:22:24.000.795,=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/11/02 14:56:05.000.423,C:\Users\55859\Documents\Embarcadero\Studio\Projects\FolhaDePagamentoProject.dproj=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Project5.dproj</Transaction>
+    <Transaction>2021/11/02 14:56:14.000.297,C:\Users\55859\Documents\Embarcadero\Studio\Projects\UnitFolha.dfm=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.dfm</Transaction>
+    <Transaction>2021/11/02 14:56:14.000.297,C:\Users\55859\Documents\Embarcadero\Studio\Projects\UnitFolha.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/11/02 14:56:28.000.553,=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/11/02 14:56:44.000.979,C:\Users\55859\Documents\Embarcadero\Studio\Projects\Empregado.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit6.pas</Transaction>
+    <Transaction>2021/11/02 19:18:53.000.413,C:\Users\55859\Documents\Embarcadero\Studio\Projects\FolhaDePagamentoProject.dproj=C:\Users\55859\Documents\Embarcadero\Studio\Projects\FolhaDePagamentoProject.dproj</Transaction>
+    <Transaction>2021/11/04 17:02:34.000,=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit7.pas</Transaction>
+    <Transaction>2021/11/04 17:07:54.086,C:\Users\55859\Documents\Embarcadero\Studio\Projects\EdicaoEmpregado.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit7.pas</Transaction>
+    <Transaction>2021/11/04 17:07:54.086,C:\Users\55859\Documents\Embarcadero\Studio\Projects\EdicaoEmpregado.dfm=C:\Users\55859\Documents\Embarcadero\Studio\Projects\Unit7.dfm</Transaction>
+    <Transaction>2021/11/04 19:59:12.223,E:\Delphi-Projects\FormProject\EdicaoEmpregado.dfm=C:\Users\55859\Documents\Embarcadero\Studio\Projects\EdicaoEmpregado.dfm</Transaction>
+    <Transaction>2021/11/04 19:59:12.223,E:\Delphi-Projects\FormProject\EdicaoEmpregado.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\EdicaoEmpregado.pas</Transaction>
+    <Transaction>2021/11/04 19:59:22.127,E:\Delphi-Projects\FormProject\FolhaDePagamentoProject.dproj=C:\Users\55859\Documents\Embarcadero\Studio\Projects\FolhaDePagamentoProject.dproj</Transaction>
+    <Transaction>2021/11/04 20:00:13.695,E:\Delphi-Projects\FormProject\UnitFolha.pas=C:\Users\55859\Documents\Embarcadero\Studio\Projects\UnitFolha.pas</Transaction>
+    <Transaction>2021/11/04 20:00:13.695,E:\Delphi-Projects\FormProject\UnitFolha.dfm=C:\Users\55859\Documents\Embarcadero\Studio\Projects\UnitFolha.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

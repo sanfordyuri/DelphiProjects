@@ -1,0 +1,17 @@
+﻿program FolhaDePagamento;
+
+uses
+  Vcl.Forms,
+  FormPrincipal in 'FormPrincipal.pas' {Form6},
+  Conexao in 'Conexao.pas' {DataModule2: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm6, Form6);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TDataModule2, DataModule2);
+  Application.Run;
+end.

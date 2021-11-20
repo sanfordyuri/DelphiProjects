@@ -1,0 +1,48 @@
+﻿unit FormPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Conexao;
+
+type
+  TForm6 = class(TForm)
+    Menu: TMainMenu;
+    Cadastros1: TMenuItem;
+    Cadastros2: TMenuItem;
+    Relatrios1: TMenuItem;
+    Relatrios2: TMenuItem;
+    Cargos1: TMenuItem;
+    Cargos2: TMenuItem;
+    Funcionrios1: TMenuItem;
+    N1: TMenuItem;
+    abeladeINSS1: TMenuItem;
+    abeladeIRRF1: TMenuItem;
+    N2: TMenuItem;
+    Sair1: TMenuItem;
+    RelatoriodeFolha1: TMenuItem;
+    RelatoriodeFolha2: TMenuItem;
+    Mudanadesalrios1: TMenuItem;
+    Mudanadesalrios2: TMenuItem;
+    Folhadepagamento1: TMenuItem;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form6: TForm6;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm6.FormCreate(Sender: TObject);
+begin
+  DM := TDataModule1.Create(Self);
+end;
+
+end.

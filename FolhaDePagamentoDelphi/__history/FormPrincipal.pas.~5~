@@ -1,0 +1,63 @@
+﻿unit FormPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Conexao, CadastroCargos;
+
+type
+  TTFormPrincipal = class(TForm)
+    Menu: TMainMenu;
+    Cadastros1: TMenuItem;
+    Movimentos1: TMenuItem;
+    Movimentos2: TMenuItem;
+    btnSairMenu: TMenuItem;
+    CargosBtnMenu: TMenuItem;
+    Cargos2: TMenuItem;
+    Funcionrios1: TMenuItem;
+    Funcionrios2: TMenuItem;
+    abeladeINSS1: TMenuItem;
+    abeladeINSS2: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    Mudanadesalrios1: TMenuItem;
+    Mudanadesalrios2: TMenuItem;
+    Folhadepagamento1: TMenuItem;
+    Folha1: TMenuItem;
+    Folha2: TMenuItem;
+    procedure FormCreate(Sender: TObject);
+    procedure btnSairMenuClick(Sender: TObject);
+    procedure CargosBtnMenuClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TFormPrincipal: TTFormPrincipal;
+  TCadastroCargos: TCadastro;
+
+implementation
+
+{$R *.dfm}
+
+procedure TTFormPrincipal.CargosBtnMenuClick(Sender: TObject);
+begin
+  TCadastroCargos := TCadastro.Create(Self);
+  CadastroCargos.Cadastro.ShowModal;
+  CadastroCargos.Cadastro.Free
+end;
+
+procedure TTFormPrincipal.FormCreate(Sender: TObject);
+begin
+  DM := TDataModule2.Create(Self);
+end;
+
+procedure TTFormPrincipal.btnSairMenuClick(Sender: TObject);
+begin
+  Close;
+end;
+
+end.

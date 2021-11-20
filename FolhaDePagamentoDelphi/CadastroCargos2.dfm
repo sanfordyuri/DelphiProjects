@@ -1,0 +1,150 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de Cargos'
+  ClientHeight = 463
+  ClientWidth = 607
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PgControl: TPageControl
+    Left = -2
+    Top = 0
+    Width = 609
+    Height = 465
+    ActivePage = Registro
+    TabOrder = 0
+    object Cargos: TTabSheet
+      Caption = 'Cargos'
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 598
+        Height = 370
+        DataSource = DtsCargos
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = DBGrid1DblClick
+      end
+      object addCargoBtn: TButton
+        Left = 11
+        Top = 385
+        Width = 100
+        Height = 41
+        Caption = 'Adicionar '
+        TabOrder = 1
+        OnClick = addCargoBtnClick
+      end
+      object removeCargosbtn: TButton
+        Left = 133
+        Top = 385
+        Width = 100
+        Height = 41
+        Caption = 'Remover'
+        TabOrder = 2
+        OnClick = removeCargosbtnClick
+      end
+      object CargosSalvarBtn: TButton
+        Left = 490
+        Top = 385
+        Width = 100
+        Height = 41
+        Caption = 'Salvar'
+        TabOrder = 3
+        OnClick = CargosSalvarBtnClick
+      end
+    end
+    object Registro: TTabSheet
+      Caption = 'Registro'
+      ImageIndex = 1
+      object Label1: TLabel
+        Left = 27
+        Top = 24
+        Width = 41
+        Height = 13
+        Caption = 'CODIGO'
+        FocusControl = DBCodigoEdt
+      end
+      object Label2: TLabel
+        Left = 27
+        Top = 80
+        Width = 29
+        Height = 13
+        Caption = 'NOME'
+        FocusControl = DBNomeEdt
+      end
+      object DBCodigoEdt: TDBEdit
+        Left = 27
+        Top = 40
+        Width = 134
+        Height = 21
+        DataField = 'CODIGO'
+        DataSource = DtsCargos
+        Enabled = False
+        TabOrder = 0
+      end
+      object DBNomeEdt: TDBEdit
+        Left = 27
+        Top = 96
+        Width = 198
+        Height = 21
+        DataField = 'NOME'
+        DataSource = DtsCargos
+        TabOrder = 1
+      end
+      object salvarRegistroBtn: TButton
+        Left = 27
+        Top = 150
+        Width = 100
+        Height = 39
+        Caption = 'Salvar'
+        TabOrder = 2
+        OnClick = salvarRegistroBtnClick
+      end
+      object cancelarCargosBtn: TButton
+        Left = 150
+        Top = 150
+        Width = 100
+        Height = 39
+        Caption = 'Cancelar'
+        TabOrder = 3
+        OnClick = cancelarCargosBtnClick
+      end
+    end
+  end
+  object QueryCargos: TFDQuery
+    Connection = DataModule2.Connection
+    SQL.Strings = (
+      'SELECT * FROM TB_CARGO ORDER BY codigo ASC')
+    Left = 520
+    Top = 256
+    object QueryCargosCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryCargosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 100
+    end
+  end
+  object DtsCargos: TDataSource
+    DataSet = QueryCargos
+    Left = 472
+    Top = 256
+  end
+end

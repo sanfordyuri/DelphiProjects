@@ -1,0 +1,49 @@
+unit CadastroFuncionarios2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ComCtrls, Vcl.StdCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Conexao;
+
+type
+  TForm3 = class(TForm)
+    PageControl1: TPageControl;
+    Funcionarios: TTabSheet;
+    Registro: TTabSheet;
+    DBGrid1: TDBGrid;
+    addFuncionarioBtn: TButton;
+    removeFuncionariobtn: TButton;
+    SalvarFuncionarioBtn: TButton;
+    DtsFuncionario: TDataSource;
+    QueryFuncionario: TFDQuery;
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm3.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  QueryFuncionario.Close;
+end;
+
+procedure TForm3.FormShow(Sender: TObject);
+begin
+  QueryFuncionario.Open;
+end;
+
+end.

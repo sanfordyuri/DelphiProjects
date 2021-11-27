@@ -4,9 +4,6 @@ Coordinates=812,30,103,33
 [DtsFuncionario]
 Coordinates=29,77,89,33
 
-[QueryFuncionarioCARGO]
-Coordinates=778,1,141,33
-
 [QueryFuncionarioCODIGO]
 Coordinates=778,56,144,33
 
@@ -26,7 +23,7 @@ Coordinates=778,386,135,33
 Coordinates=778,496,133,33
 
 []
-Coordinates=699,20,92,195
+Coordinates=156,211,46,51
 Visible=True
 ExplicitSubNodes=ItemIndex
 
@@ -53,9 +50,6 @@ Coordinates=261,381,54,33
 
 [removeFuncionariobtn]
 Coordinates=130,1,125,51
-
-[Label7]
-Coordinates=156,211,46,51
 
 [Label2]
 Coordinates=156,71,46,51

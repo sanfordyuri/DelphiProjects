@@ -1,4 +1,4 @@
-object Form2: TForm2
+object CadastroCargos: TCadastroCargos
   Left = 0
   Top = 0
   Caption = 'Cadastro de Cargos'
@@ -11,7 +11,8 @@ object Form2: TForm2
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnShow = FormShow
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object PgControl: TPageControl
@@ -19,8 +20,9 @@ object Form2: TForm2
     Top = 0
     Width = 609
     Height = 465
-    ActivePage = Registro
+    ActivePage = Cargos
     TabOrder = 0
+    OnChange = PgControlChange
     object Cargos: TTabSheet
       Caption = 'Cargos'
       object DBGrid1: TDBGrid
@@ -29,6 +31,7 @@ object Form2: TForm2
         Width = 598
         Height = 370
         DataSource = DtsCargos
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -38,10 +41,10 @@ object Form2: TForm2
         OnDblClick = DBGrid1DblClick
       end
       object addCargoBtn: TButton
-        Left = 11
-        Top = 385
+        Left = 19
+        Top = 386
         Width = 100
-        Height = 41
+        Height = 40
         Caption = 'Adicionar '
         TabOrder = 1
         OnClick = addCargoBtnClick
@@ -124,7 +127,7 @@ object Form2: TForm2
     end
   end
   object QueryCargos: TFDQuery
-    Connection = DataModule2.Connection
+    Connection = DM.Connection
     SQL.Strings = (
       'SELECT * FROM TB_CARGO ORDER BY codigo ASC')
     Left = 520

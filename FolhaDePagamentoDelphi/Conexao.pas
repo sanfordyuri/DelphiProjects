@@ -11,7 +11,7 @@ uses
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
-  TDataModule2 = class(TDataModule)
+  TDM = class(TDataModule)
     Connection: TFDConnection;
     Transaction: TFDTransaction;
     FDPhysFBDriverLink1: TFDPhysFBDriverLink;
@@ -24,7 +24,7 @@ type
   end;
 
 var
-  DM: TDataModule2;
+  DM: TDM;
 
 implementation
 
@@ -32,7 +32,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TDataModule2.DataModuleCreate(Sender: TObject);
+procedure TDM.DataModuleCreate(Sender: TObject);
 begin
   Try
     Connection.Connected := true;
@@ -42,7 +42,7 @@ begin
   End;
 end;
 
-procedure TDataModule2.DataModuleDestroy(Sender: TObject);
+procedure TDM.DataModuleDestroy(Sender: TObject);
 begin
   Connection.Connected := false;
 end;

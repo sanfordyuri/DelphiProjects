@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Conexao, CadastroCargos, CadastroFuncionarios2, CadastroCargos2;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Conexao, CadastroCargos, CadastroFuncionarios2, CadastroCargos2,
+  Vcl.StdCtrls, CadastroEventos;
 
 type
   TTFormPrincipal = class(TForm)
@@ -14,7 +15,7 @@ type
     Movimentos2: TMenuItem;
     btnSairMenu: TMenuItem;
     CargosBtnMenu: TMenuItem;
-    Cargos2: TMenuItem;
+    EventosBtnMenu: TMenuItem;
     FuncionariosBtnMenu: TMenuItem;
     Funcionrios2: TMenuItem;
     abeladeINSS1: TMenuItem;
@@ -31,6 +32,7 @@ type
     procedure CargosBtnMenuClick(Sender: TObject);
     procedure FuncionariosBtnMenuClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure EventosBtnMenuClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,25 +41,32 @@ type
 
 var
   TFormPrincipal: TTFormPrincipal;
-  Cadastro2Cargos: TForm2;
-  CadastroFuncionarios: TForm3;
-  DM: TDataModule2;
+  Cadastro2Cargos: TCadastroCargos;
+  CadastroFuncionarios: TCadastroFuncionario;
+  CadastroEventos:  TTCadastroEvento;
+  DM: TDM;
 
 implementation
 
 {$R *.dfm}
 
+procedure TTFormPrincipal.EventosBtnMenuClick(Sender: TObject);
+begin
+  CadastroEventos := TTCadastroEvento.Create(Self);
+  CadastroEventos.ShowModal;
+  CadastroEventos.Free;
+end;
+
 procedure TTFormPrincipal.CargosBtnMenuClick(Sender: TObject);
 begin
-
-  Cadastro2Cargos := TForm2.Create(Self);
+  Cadastro2Cargos := TCadastroCargos.Create(Self);
   Cadastro2Cargos.ShowModal;
   Cadastro2Cargos.Free;
 end;
 
 procedure TTFormPrincipal.FormCreate(Sender: TObject);
 begin
-  DM := TDataModule2.Create(Self);
+  DM := TDM.Create(Self);
 end;
 
 procedure TTFormPrincipal.FormDestroy(Sender: TObject);
@@ -67,7 +76,7 @@ end;
 
 procedure TTFormPrincipal.FuncionariosBtnMenuClick(Sender: TObject);
 begin
-  CadastroFuncionarios := TForm3.Create(Self);
+  CadastroFuncionarios := TCadastroFuncionario.Create(Self);
   CadastroFuncionarios.ShowModal;
   CadastroFuncionarios.Free;
 end;

@@ -1,0 +1,132 @@
+unit CadastroCargos2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Conexao, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
+
+type
+  TForm2 = class(TForm)
+    QueryCargos: TFDQuery;
+    DtsCargos: TDataSource;
+    QueryCargosCODIGO: TIntegerField;
+    QueryCargosNOME: TStringField;
+    PgControl: TPageControl;
+    Cargos: TTabSheet;
+    Registro: TTabSheet;
+    DBGrid1: TDBGrid;
+    Label1: TLabel;
+    DBCodigoEdt: TDBEdit;
+    Label2: TLabel;
+    DBNomeEdt: TDBEdit;
+    salvarRegistroBtn: TButton;
+    addCargoBtn: TButton;
+    removeCargosbtn: TButton;
+    CargosSalvarBtn: TButton;
+    cancelarCargosBtn: TButton;
+    procedure FormShow(Sender: TObject);
+    procedure adicionarBtnCargosClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure cargosEditarBtnClick(Sender: TObject);
+    procedure CargosSalvarBtnClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure addCargoBtnClick(Sender: TObject);
+    procedure atualizarCodigoCargo(Sender: TObject);
+    procedure salvarRegistroBtnClick(Sender: TObject);
+    procedure removeCargosbtnClick(Sender: TObject);
+    procedure cancelarCargosBtnClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  CodigoCargo : Integer;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.addCargoBtnClick(Sender: TObject);
+begin
+  PgControl.ActivePage :=  PgControl.Pages[1] ;
+  atualizarCodigoCargo(Self);
+end;
+
+procedure TForm2.adicionarBtnCargosClick(Sender: TObject);
+begin
+  QueryCargos.Append;
+end;
+
+procedure TForm2.atualizarCodigoCargo(Sender: TObject);
+begin
+  QueryCargos.Last;
+  CodigoCargo :=  QueryCargos.FieldByName('CODIGO').Value + 1;
+  QueryCargos.Append;
+  DBCodigoEdt.Text := IntToStr(CodigoCargo);
+end;
+
+procedure TForm2.btnSalvarClick(Sender: TObject);
+begin
+  QueryCargos.Post;
+end;
+
+procedure TForm2.cancelarCargosBtnClick(Sender: TObject);
+begin
+  QueryCargos.Cancel;
+  ShowMessage('Operação de adição cancelada');
+  PgControl.ActivePage := Cargos;
+end;
+
+procedure TForm2.cargosEditarBtnClick(Sender: TObject);
+begin
+  QueryCargos.Edit;
+end;
+
+procedure TForm2.CargosSalvarBtnClick(Sender: TObject);
+begin
+  QueryCargos.Post;
+  ShowMessage('Cargo Atualizado com sucesso.');
+end;
+
+procedure TForm2.DBGrid1DblClick(Sender: TObject);
+begin
+  if not QueryCargos.IsEmpty then
+    begin
+      QueryCargos.Edit;
+    end;
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  QueryCargos.Open;
+end;
+
+procedure TForm2.removeCargosbtnClick(Sender: TObject);
+begin
+  if not QueryCargos.IsEmpty then
+    begin
+      QueryCargos.Delete;
+    end
+  else
+    begin
+      ShowMessage('Seleciona um cargo para remove-lo');
+    end;
+end;
+
+procedure TForm2.salvarRegistroBtnClick(Sender: TObject);
+begin
+    QueryCargos.Post;
+    QueryCargos.Refresh;
+    PgControl.ActivePage :=  PgControl.Pages[0] ;
+    ShowMessage('Novo Cargo Adicionado com sucesso.');
+end;
+
+end.

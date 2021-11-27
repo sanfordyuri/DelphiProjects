@@ -1,0 +1,50 @@
+unit CadastroEventos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Conexao;
+
+type
+  TTCadastroEvento = class(TForm)
+    PageControl1: TPageControl;
+    Eventos: TTabSheet;
+    Registro: TTabSheet;
+    DBGrid1: TDBGrid;
+    addEventoBtn: TButton;
+    removeEventobtn: TButton;
+    EventoSalvarBtn: TButton;
+    QueryEventos: TFDQuery;
+    DtsEventos: TDataSource;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TCadastroEvento: TTCadastroEvento;
+
+implementation
+
+{$R *.dfm}
+
+procedure TTCadastroEvento.FormCreate(Sender: TObject);
+begin
+  QueryEventos.Open;
+  PageControl1.ActivePage := Eventos;
+end;
+
+procedure TTCadastroEvento.FormDestroy(Sender: TObject);
+begin
+  QueryEventos.Close;
+end;
+
+end.

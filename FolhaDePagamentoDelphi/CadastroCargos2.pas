@@ -11,7 +11,7 @@ uses
   Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
 
 type
-  TForm2 = class(TForm)
+  TCadastroCargos = class(TForm)
     QueryCargos: TFDQuery;
     DtsCargos: TDataSource;
     QueryCargosCODIGO: TIntegerField;
@@ -29,7 +29,6 @@ type
     removeCargosbtn: TButton;
     CargosSalvarBtn: TButton;
     cancelarCargosBtn: TButton;
-    procedure FormShow(Sender: TObject);
     procedure adicionarBtnCargosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure cargosEditarBtnClick(Sender: TObject);
@@ -40,6 +39,9 @@ type
     procedure salvarRegistroBtnClick(Sender: TObject);
     procedure removeCargosbtnClick(Sender: TObject);
     procedure cancelarCargosBtnClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure PgControlChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,25 +49,25 @@ type
   end;
 
 var
-  Form2: TForm2;
+  CadastroCargos: TCadastroCargos;
   CodigoCargo : Integer;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm2.addCargoBtnClick(Sender: TObject);
+procedure TCadastroCargos.addCargoBtnClick(Sender: TObject);
 begin
-  PgControl.ActivePage :=  PgControl.Pages[1] ;
+  PgControl.ActivePage :=  Registro ;
   atualizarCodigoCargo(Self);
 end;
 
-procedure TForm2.adicionarBtnCargosClick(Sender: TObject);
+procedure TCadastroCargos.adicionarBtnCargosClick(Sender: TObject);
 begin
   QueryCargos.Append;
 end;
 
-procedure TForm2.atualizarCodigoCargo(Sender: TObject);
+procedure TCadastroCargos.atualizarCodigoCargo(Sender: TObject);
 begin
   QueryCargos.Last;
   CodigoCargo :=  QueryCargos.FieldByName('CODIGO').Value + 1;
@@ -73,30 +75,30 @@ begin
   DBCodigoEdt.Text := IntToStr(CodigoCargo);
 end;
 
-procedure TForm2.btnSalvarClick(Sender: TObject);
+procedure TCadastroCargos.btnSalvarClick(Sender: TObject);
 begin
   QueryCargos.Post;
 end;
 
-procedure TForm2.cancelarCargosBtnClick(Sender: TObject);
+procedure TCadastroCargos.cancelarCargosBtnClick(Sender: TObject);
 begin
   QueryCargos.Cancel;
   ShowMessage('Operação de adição cancelada');
   PgControl.ActivePage := Cargos;
 end;
 
-procedure TForm2.cargosEditarBtnClick(Sender: TObject);
+procedure TCadastroCargos.cargosEditarBtnClick(Sender: TObject);
 begin
   QueryCargos.Edit;
 end;
 
-procedure TForm2.CargosSalvarBtnClick(Sender: TObject);
+procedure TCadastroCargos.CargosSalvarBtnClick(Sender: TObject);
 begin
   QueryCargos.Post;
   ShowMessage('Cargo Atualizado com sucesso.');
 end;
 
-procedure TForm2.DBGrid1DblClick(Sender: TObject);
+procedure TCadastroCargos.DBGrid1DblClick(Sender: TObject);
 begin
   if not QueryCargos.IsEmpty then
     begin
@@ -104,12 +106,24 @@ begin
     end;
 end;
 
-procedure TForm2.FormShow(Sender: TObject);
+procedure TCadastroCargos.FormCreate(Sender: TObject);
 begin
   QueryCargos.Open;
+  PgControl.ActivePage := Cargos;
 end;
 
-procedure TForm2.removeCargosbtnClick(Sender: TObject);
+procedure TCadastroCargos.FormDestroy(Sender: TObject);
+begin
+  QueryCargos.Close;
+end;
+
+procedure TCadastroCargos.PgControlChange(Sender: TObject);
+begin
+  if (PgControl.ActivePage = Cargos) and (QueryCargos.State in [dsInsert, dsEdit]) then
+    QueryCargos.Cancel;
+end;
+
+procedure TCadastroCargos.removeCargosbtnClick(Sender: TObject);
 begin
   if not QueryCargos.IsEmpty then
     begin
@@ -117,16 +131,15 @@ begin
     end
   else
     begin
-      ShowMessage('Seleciona um cargo para remove-lo');
+      ShowMessage('Selecione um cargo para remove-lo');
     end;
 end;
 
-procedure TForm2.salvarRegistroBtnClick(Sender: TObject);
+procedure TCadastroCargos.salvarRegistroBtnClick(Sender: TObject);
 begin
     QueryCargos.Post;
     QueryCargos.Refresh;
-    PgControl.ActivePage :=  PgControl.Pages[0] ;
-    ShowMessage('Novo Cargo Adicionado com sucesso.');
+    PgControl.ActivePage := Cargos ;
 end;
 
 end.

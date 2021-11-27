@@ -1,4 +1,4 @@
-object Form3: TForm3
+object CadastroFuncionario: TCadastroFuncionario
   Left = 0
   Top = 0
   Caption = 'Cadastro de Funcion'#225'rios'
@@ -11,8 +11,8 @@ object Form3: TForm3
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnClose = FormClose
-  OnShow = FormShow
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -20,26 +20,29 @@ object Form3: TForm3
     Top = 0
     Width = 609
     Height = 465
-    ActivePage = Registro
+    ActivePage = Funcionarios
     TabOrder = 0
+    OnChange = PageControl1Change
     object Funcionarios: TTabSheet
       Caption = 'Funcionarios'
       object DBGrid1: TDBGrid
         Left = 0
-        Top = 0
+        Top = 9
         Width = 601
         Height = 370
         DataSource = DtsFuncionario
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDblClick = DBGrid1DblClick
       end
       object addFuncionarioBtn: TButton
         Left = 19
-        Top = 386
+        Top = 385
         Width = 100
         Height = 40
         Caption = 'Adicionar '
@@ -53,6 +56,7 @@ object Form3: TForm3
         Height = 41
         Caption = 'Remover'
         TabOrder = 2
+        OnClick = removeFuncionariobtnClick
       end
       object SalvarFuncionarioBtn: TButton
         Left = 490
@@ -61,6 +65,7 @@ object Form3: TForm3
         Height = 41
         Caption = 'Salvar'
         TabOrder = 3
+        OnClick = SalvarFuncionarioBtnClick
       end
     end
     object Registro: TTabSheet
@@ -113,13 +118,6 @@ object Form3: TForm3
         Caption = 'EMAIL'
         FocusControl = DBEdit6
       end
-      object Label7: TLabel
-        Left = 32
-        Top = 264
-        Width = 38
-        Height = 13
-        Caption = 'STATUS'
-      end
       object DBEdit1: TDBEdit
         Left = 32
         Top = 40
@@ -150,12 +148,12 @@ object Form3: TForm3
       end
       object DBEdit5: TDBEdit
         Left = 32
-        Top = 200
+        Top = 197
         Width = 150
         Height = 21
         DataField = 'CONTATO'
         DataSource = DtsFuncionario
-        TabOrder = 3
+        TabOrder = 4
       end
       object DBEdit6: TDBEdit
         Left = 32
@@ -164,7 +162,7 @@ object Form3: TForm3
         Height = 21
         DataField = 'EMAIL'
         DataSource = DtsFuncionario
-        TabOrder = 4
+        TabOrder = 5
       end
       object salvarFuncionarioRegisBtn: TButton
         Left = 32
@@ -172,20 +170,20 @@ object Form3: TForm3
         Width = 105
         Height = 33
         Caption = 'Salvar'
-        TabOrder = 5
+        TabOrder = 7
         OnClick = salvarFuncionarioRegisBtnClick
       end
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 32
         Top = 157
-        Width = 145
+        Width = 161
         Height = 21
         DataField = 'CARGO'
         DataSource = DtsFuncionario
         KeyField = 'CODIGO'
         ListField = 'NOME'
         ListSource = DtsCargos2
-        TabOrder = 6
+        TabOrder = 3
       end
       object DBRadioGroup1: TDBRadioGroup
         Left = 32
@@ -199,55 +197,92 @@ object Form3: TForm3
         Items.Strings = (
           'Ativo'
           'Inativo')
-        TabOrder = 7
+        TabOrder = 6
         Values.Strings = (
           '1'
           '0')
+      end
+      object cancelarFuncionarioBtn: TButton
+        Left = 168
+        Top = 368
+        Width = 105
+        Height = 33
+        Caption = 'Cancelar'
+        TabOrder = 8
+        OnClick = cancelarFuncionarioBtnClick
+      end
+      object Panel1: TPanel
+        Left = 232
+        Top = 160
+        Width = 153
+        Height = 74
+        BevelOuter = bvNone
+        Color = clWhite
+        Ctl3D = True
+        ParentBackground = False
+        ParentCtl3D = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 9
+        Visible = False
+        StyleElements = []
+        object Label8: TLabel
+          Left = 8
+          Top = 16
+          Width = 44
+          Height = 13
+          Caption = 'SALARIO'
+          FocusControl = SalarioEdt
+        end
+        object SalarioEdt: TDBEdit
+          Left = 8
+          Top = 35
+          Width = 134
+          Height = 21
+          DataField = 'SALARIO'
+          DataSource = DtsSalario
+          TabOrder = 0
+        end
+      end
+      object DBGrid2: TDBGrid
+        Left = 232
+        Top = 240
+        Width = 289
+        Height = 97
+        DataSource = DtsSalario
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgTitleClick, dgTitleHotTrack]
+        ReadOnly = True
+        TabOrder = 10
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
       end
     end
   end
   object DtsFuncionario: TDataSource
     DataSet = QueryFuncionario
-    Left = 476
-    Top = 112
+    Left = 508
+    Top = 72
   end
   object QueryFuncionario: TFDQuery
-    Connection = DataModule2.Connection
+    Connection = DM.Connection
     SQL.Strings = (
       'SELECT * FROM TB_FUNCIONARIO ORDER BY codigo ASC')
-    Left = 532
-    Top = 112
+    Left = 564
+    Top = 72
     object QueryFuncionarioCODIGO: TIntegerField
+      DisplayWidth = 1
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object QueryFuncionarioNOME: TStringField
+      DisplayWidth = 25
       FieldName = 'NOME'
       Origin = 'NOME'
-      Required = True
-      Size = 100
-    end
-    object QueryFuncionarioNASCIMENTO: TSQLTimeStampField
-      FieldName = 'NASCIMENTO'
-      Origin = 'NASCIMENTO'
-      Required = True
-    end
-    object QueryFuncionarioCARGO: TIntegerField
-      FieldName = 'CARGO'
-      Origin = 'CARGO'
-      Required = True
-    end
-    object QueryFuncionarioCONTATO: TStringField
-      FieldName = 'CONTATO'
-      Origin = 'CONTATO'
-      Required = True
-      Size = 100
-    end
-    object QueryFuncionarioEMAIL: TStringField
-      FieldName = 'EMAIL'
-      Origin = 'EMAIL'
       Required = True
       Size = 100
     end
@@ -258,17 +293,99 @@ object Form3: TForm3
       FixedChar = True
       Size = 1
     end
+    object QueryFuncionarioNASCIMENTO: TSQLTimeStampField
+      DisplayWidth = 10
+      FieldName = 'NASCIMENTO'
+      Origin = 'NASCIMENTO'
+      Required = True
+      EditMask = '!99/99/0000;1;_'
+    end
+    object QueryFuncionarioNOME_CARGO: TStringField
+      FieldKind = fkLookup
+      FieldName = 'NOME CARGO'
+      LookupDataSet = QueryCargos2
+      LookupKeyFields = 'CODIGO'
+      LookupResultField = 'NOME'
+      KeyFields = 'CARGO'
+      Lookup = True
+    end
+    object QueryFuncionarioCONTATO: TStringField
+      DisplayWidth = 15
+      FieldName = 'CONTATO'
+      Origin = 'CONTATO'
+      Required = True
+      EditMask = '!\(99\) 00000-0000;1;_'
+      Size = 100
+    end
+    object QueryFuncionarioEMAIL: TStringField
+      DisplayWidth = 25
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Required = True
+      Size = 100
+    end
+    object QueryFuncionarioCARGO: TIntegerField
+      FieldName = 'CARGO'
+      Origin = 'CARGO'
+      Required = True
+      Visible = False
+    end
   end
   object DtsCargos2: TDataSource
     DataSet = QueryCargos2
-    Left = 476
-    Top = 72
+    Left = 508
+    Top = 32
   end
   object QueryCargos2: TFDQuery
-    Connection = DataModule2.Connection
+    Connection = DM.Connection
     SQL.Strings = (
       'SELECT * FROM TB_CARGO ORDER BY codigo ASC')
-    Left = 532
-    Top = 72
+    Left = 564
+    Top = 32
+    object QueryCargos2CODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryCargos2NOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 100
+    end
+  end
+  object QuerySalario: TFDQuery
+    IndexFieldNames = 'FUNCIONARIO'
+    MasterSource = DtsFuncionario
+    MasterFields = 'CODIGO'
+    DetailFields = 'FUNCIONARIO'
+    Connection = DM.Connection
+    SQL.Strings = (
+      'SELECT * FROM TB_SALARIOS ORDER BY DATA ASC')
+    Left = 564
+    Top = 128
+    object QuerySalarioFUNCIONARIO: TIntegerField
+      FieldName = 'FUNCIONARIO'
+      Origin = 'FUNCIONARIO'
+      Required = True
+      Visible = False
+    end
+    object QuerySalarioSALARIO: TSingleField
+      FieldName = 'SALARIO'
+      Origin = 'SALARIO'
+      Required = True
+    end
+    object QuerySalarioDATA: TSQLTimeStampField
+      FieldName = 'DATA'
+      KeyFields = 'DATA'
+      Origin = '"DATA"'
+      Required = True
+    end
+  end
+  object DtsSalario: TDataSource
+    DataSet = QuerySalario
+    Left = 508
+    Top = 128
   end
 end

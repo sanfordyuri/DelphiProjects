@@ -1,0 +1,82 @@
+object TCadastroEvento: TTCadastroEvento
+  Left = 0
+  Top = 0
+  Caption = 'TCadastroEvento'
+  ClientHeight = 463
+  ClientWidth = 607
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 609
+    Height = 465
+    ActivePage = Eventos
+    TabOrder = 0
+    object Eventos: TTabSheet
+      Caption = 'Eventos'
+      object DBGrid1: TDBGrid
+        Left = -4
+        Top = 0
+        Width = 605
+        Height = 370
+        DataSource = DtsEventos
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+      object addEventoBtn: TButton
+        Left = 19
+        Top = 386
+        Width = 100
+        Height = 40
+        Caption = 'Adicionar '
+        TabOrder = 1
+      end
+      object removeEventobtn: TButton
+        Left = 133
+        Top = 385
+        Width = 100
+        Height = 41
+        Caption = 'Remover'
+        TabOrder = 2
+      end
+      object EventoSalvarBtn: TButton
+        Left = 490
+        Top = 385
+        Width = 100
+        Height = 41
+        Caption = 'Salvar'
+        TabOrder = 3
+      end
+    end
+    object Registro: TTabSheet
+      Caption = 'Registro'
+      ImageIndex = 1
+    end
+  end
+  object QueryEventos: TFDQuery
+    Connection = DM.Connection
+    SQL.Strings = (
+      'SELECT * FROM TB_EVENTOS ORDER BY CODIGO ASC')
+    Left = 492
+    Top = 56
+  end
+  object DtsEventos: TDataSource
+    DataSet = QueryEventos
+    Left = 540
+    Top = 56
+  end
+end

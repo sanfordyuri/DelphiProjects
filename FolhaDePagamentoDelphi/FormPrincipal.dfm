@@ -1,7 +1,7 @@
 object TFormPrincipal: TTFormPrincipal
   Left = 0
   Top = 0
-  Caption = 'TFormPrincipal'
+  Caption = 'Projeto Folha de Pagamento'
   ClientHeight = 553
   ClientWidth = 836
   Color = clBtnFace
@@ -36,11 +36,13 @@ object TFormPrincipal: TTFormPrincipal
       object Funcionrios2: TMenuItem
         Caption = '-'
       end
-      object abeladeINSS1: TMenuItem
+      object TabeladeINSS1: TMenuItem
         Caption = 'Tabela de INSS'
+        OnClick = TabeladeINSS1Click
       end
-      object abeladeINSS2: TMenuItem
+      object TabeladeIRRF: TMenuItem
         Caption = 'Tabela de IRRF'
+        OnClick = TabeladeIRRFClick
       end
       object N1: TMenuItem
         Caption = '-'
@@ -53,21 +55,26 @@ object TFormPrincipal: TTFormPrincipal
       Caption = 'Movimentos'
       object Mudanadesalrios1: TMenuItem
         Caption = 'Mudan'#231'a de sal'#225'rio(s)'
+        OnClick = Mudanadesalrios1Click
       end
-      object Mudanadesalrios2: TMenuItem
+      object MovimentoEventos: TMenuItem
         Caption = 'Lan'#231'ar evento para funcion'#225'rio(s)'
+        OnClick = MovimentoEventosClick
       end
-      object Folhadepagamento1: TMenuItem
+      object MovumentoFolhaDePagamento: TMenuItem
         Caption = 'Folha de pagamento'
+        OnClick = MovumentoFolhaDePagamentoClick
       end
     end
     object Movimentos2: TMenuItem
       Caption = 'Relat'#243'rios'
-      object Folha1: TMenuItem
+      object RelFolha: TMenuItem
         Caption = 'Folha'
+        OnClick = RelFolhaClick
       end
-      object Folha2: TMenuItem
+      object RelFuncionarios: TMenuItem
         Caption = 'Empregados'
+        OnClick = RelFuncionariosClick
       end
     end
     object btnSairMenu: TMenuItem

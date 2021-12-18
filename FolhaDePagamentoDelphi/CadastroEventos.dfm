@@ -20,7 +20,7 @@ object TCadastroEvento: TTCadastroEvento
     Top = 0
     Width = 609
     Height = 465
-    ActivePage = Registro
+    ActivePage = Eventos
     TabOrder = 0
     OnChange = PageControl1Change
     object Eventos: TTabSheet
@@ -39,6 +39,23 @@ object TCadastroEvento: TTCadastroEvento
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
         OnDblClick = DBGrid1DblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            ReadOnly = True
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCRICAO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'TIPO'
+            Visible = True
+          end>
       end
       object addEventoBtn: TButton
         Left = 19

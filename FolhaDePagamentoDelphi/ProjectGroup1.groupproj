@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{358CADC3-8C82-48A6-853A-54EBBF6CFE29}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FolhaDePagamento.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\Users\55859\Desktop\fortesreport-ce-master\Packages\frce.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FolhaDePagamento">
+        <MSBuild Projects="FolhaDePagamento.dproj"/>
+    </Target>
+    <Target Name="FolhaDePagamento:Clean">
+        <MSBuild Projects="FolhaDePagamento.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FolhaDePagamento:Make">
+        <MSBuild Projects="FolhaDePagamento.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="frce">
+        <MSBuild Projects="C:\Users\55859\Desktop\fortesreport-ce-master\Packages\frce.dproj"/>
+    </Target>
+    <Target Name="frce:Clean">
+        <MSBuild Projects="C:\Users\55859\Desktop\fortesreport-ce-master\Packages\frce.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="frce:Make">
+        <MSBuild Projects="C:\Users\55859\Desktop\fortesreport-ce-master\Packages\frce.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FolhaDePagamento;frce"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FolhaDePagamento:Clean;frce:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FolhaDePagamento:Make;frce:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

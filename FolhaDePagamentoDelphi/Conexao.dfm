@@ -7,7 +7,7 @@ object DM: TDM
   object Connection: TFDConnection
     ConnectionName = 'Connection'
     Params.Strings = (
-      'Database=E:\DB\FolhaDePagamento\DBFOLHA'
+      'Database=D:\DB\FolhaDePagamento\DBFOLHA'
       'Password=masterkey'
       'User_Name=Sysdba'
       'DriverID=FB')
@@ -22,7 +22,7 @@ object DM: TDM
     Top = 176
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    VendorLib = 'E:\Firebird_2_5\WOW64\fbclient.dll'
+    VendorLib = 'D:\Firebird_2_5\WOW64\fbclient.dll'
     Left = 184
     Top = 80
   end

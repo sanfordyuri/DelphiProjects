@@ -1,0 +1,42 @@
+unit CalcInss;
+
+interface
+
+type
+  TInss = class
+    class function Calc(Salario: Currency): Currency;
+  end;
+
+implementation
+
+uses
+  SysUtils;
+
+{ TInss }
+
+{
+2020
+7,5% até um salário mínimo (R$ 1.045)
+9% para quem ganha entre R$ 1.045,01 R$ e 2.089,60
+12% para quem ganha entre R$ 2.089,61 e R$ 3.134,40
+14% para quem ganha entre R$ 3.134,41 e R$ 6.101,06
+}
+class function TInss.Calc(Salario: Currency): Currency;
+begin
+  Result := 0;
+  if Salario <= 0 then
+    raise Exception.Create('Salário deve ser maior que zero.');
+
+  if Salario <= 1045 then
+    Result := Salario * 0.075
+  else if (Salario > 1045) and (Salario <= 2089.60) then
+    Result := Salario * 0.09
+  else if (Salario > 2089.60) and (Salario <= 3134.40) then
+    Result := Salario * 0.12
+  else if (Salario > 3134.40) and (Salario <= 6101.06) then
+    Result := Salario * 0.14
+  else if (Salario > 6101.06) then
+    Result := 6101.06 * 0.14;
+end;
+
+end.

@@ -1,0 +1,38 @@
+unit CadastroIR;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids;
+
+type
+  TCadastroIrrf = class(TForm)
+    Label1: TLabel;
+    StrGridIrrf: TStringGrid;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  CadastroIrrf: TCadastroIrrf;
+
+implementation
+
+{$R *.dfm}
+
+procedure TCadastroIrrf.FormCreate(Sender: TObject);
+begin
+  StrGridIrrf.Cells[0,0] := 'Base de cálculo';
+  StrGridIrrf.Cells[1,0] := 'Alíquota';
+  StrGridIrrf.Cells[2,0] := 'Dedução';
+
+  StrGridIrrf.Cells[0,1] := 'de 0,00 até 1.903,98	';
+  StrGridIrrf.Cells[1,2] := 'isento';
+  StrGridIrrf.Cells[2,3] := '0,00';
+end;
+
+end.

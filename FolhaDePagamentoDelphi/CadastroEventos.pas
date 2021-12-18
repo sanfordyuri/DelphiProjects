@@ -96,7 +96,7 @@ procedure TTCadastroEvento.DBGrid1DblClick(Sender: TObject);
 begin
     if not QueryEventos.IsEmpty then
     begin
-      QueryEventos.Edit;
+      //QueryEventos.Edit;
     end;
 end;
 

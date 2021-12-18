@@ -15,17 +15,17 @@ object CadastroFuncionario: TCadastroFuncionario
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
-  object PageControl1: TPageControl
+  object PgControl: TPageControl
     Left = 0
     Top = 0
     Width = 609
     Height = 465
-    ActivePage = Funcionarios
+    ActivePage = Registro
     TabOrder = 0
-    OnChange = PageControl1Change
+    OnChange = PgControlChange
     object Funcionarios: TTabSheet
       Caption = 'Funcionarios'
-      object DBGrid1: TDBGrid
+      object GridFuncionarios: TDBGrid
         Left = 0
         Top = 9
         Width = 601
@@ -38,87 +38,130 @@ object CadastroFuncionario: TCadastroFuncionario
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
-        OnDblClick = DBGrid1DblClick
+        OnDblClick = GridFuncionariosDblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            ReadOnly = True
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'STATUS'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NASCIMENTO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CARGO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME CARGO'
+            ReadOnly = True
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CONTATO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'EMAIL'
+            Visible = True
+          end>
       end
-      object addFuncionarioBtn: TButton
+      object btnAddFuncionario: TButton
         Left = 19
         Top = 385
         Width = 100
         Height = 40
         Caption = 'Adicionar '
         TabOrder = 1
-        OnClick = addFuncionarioBtnClick
+        OnClick = btnAddFuncionarioClick
       end
-      object removeFuncionariobtn: TButton
+      object btnRemoverFuncionario: TButton
         Left = 141
         Top = 386
         Width = 100
         Height = 41
         Caption = 'Remover'
         TabOrder = 2
-        OnClick = removeFuncionariobtnClick
+        OnClick = btnRemoverFuncionarioClick
       end
-      object SalvarFuncionarioBtn: TButton
+      object btnSalvarFuncionario: TButton
         Left = 490
         Top = 385
         Width = 100
         Height = 41
         Caption = 'Salvar'
         TabOrder = 3
-        OnClick = SalvarFuncionarioBtnClick
+        OnClick = btnSalvarFuncionarioClick
       end
     end
     object Registro: TTabSheet
       Caption = 'Registro'
       ImageIndex = 1
-      object Label1: TLabel
+      object lblCodigo: TLabel
         Left = 32
         Top = 21
         Width = 41
         Height = 13
         Caption = 'CODIGO'
-        FocusControl = DBEdit1
+        FocusControl = edtCodigo
       end
-      object Label2: TLabel
+      object lblNome: TLabel
         Left = 32
         Top = 64
         Width = 29
         Height = 13
         Caption = 'NOME'
-        FocusControl = DBEdit2
+        FocusControl = edtNome
       end
-      object Label3: TLabel
+      object lblNascimento: TLabel
         Left = 32
         Top = 104
         Width = 66
         Height = 13
         Caption = 'NASCIMENTO'
-        FocusControl = DBEdit3
+        FocusControl = edtNascimento
       end
-      object Label4: TLabel
+      object lblCargo: TLabel
         Left = 32
         Top = 144
         Width = 36
         Height = 13
         Caption = 'CARGO'
       end
-      object Label5: TLabel
+      object lblContato: TLabel
         Left = 32
         Top = 184
         Width = 49
         Height = 13
         Caption = 'CONTATO'
-        FocusControl = DBEdit5
+        FocusControl = edtContato
       end
-      object Label6: TLabel
+      object lblEmail: TLabel
         Left = 32
         Top = 224
         Width = 30
         Height = 13
         Caption = 'EMAIL'
-        FocusControl = DBEdit6
+        FocusControl = edtEmail
       end
-      object DBEdit1: TDBEdit
+      object edtCodigo: TDBEdit
         Left = 32
         Top = 40
         Width = 49
@@ -128,7 +171,7 @@ object CadastroFuncionario: TCadastroFuncionario
         Enabled = False
         TabOrder = 0
       end
-      object DBEdit2: TDBEdit
+      object edtNome: TDBEdit
         Left = 32
         Top = 77
         Width = 265
@@ -137,7 +180,7 @@ object CadastroFuncionario: TCadastroFuncionario
         DataSource = DtsFuncionario
         TabOrder = 1
       end
-      object DBEdit3: TDBEdit
+      object edtNascimento: TDBEdit
         Left = 32
         Top = 120
         Width = 134
@@ -146,7 +189,7 @@ object CadastroFuncionario: TCadastroFuncionario
         DataSource = DtsFuncionario
         TabOrder = 2
       end
-      object DBEdit5: TDBEdit
+      object edtContato: TDBEdit
         Left = 32
         Top = 197
         Width = 150
@@ -155,7 +198,7 @@ object CadastroFuncionario: TCadastroFuncionario
         DataSource = DtsFuncionario
         TabOrder = 4
       end
-      object DBEdit6: TDBEdit
+      object edtEmail: TDBEdit
         Left = 32
         Top = 240
         Width = 180
@@ -164,16 +207,16 @@ object CadastroFuncionario: TCadastroFuncionario
         DataSource = DtsFuncionario
         TabOrder = 5
       end
-      object salvarFuncionarioRegisBtn: TButton
+      object btnSalvarRegistro: TButton
         Left = 32
         Top = 368
         Width = 105
         Height = 33
         Caption = 'Salvar'
         TabOrder = 7
-        OnClick = salvarFuncionarioRegisBtnClick
+        OnClick = btnSalvarRegistroClick
       end
-      object DBLookupComboBox1: TDBLookupComboBox
+      object edtCargo: TDBLookupComboBox
         Left = 32
         Top = 157
         Width = 161
@@ -185,7 +228,7 @@ object CadastroFuncionario: TCadastroFuncionario
         ListSource = DtsCargos2
         TabOrder = 3
       end
-      object DBRadioGroup1: TDBRadioGroup
+      object rgFuncionario: TDBRadioGroup
         Left = 32
         Top = 283
         Width = 185
@@ -202,14 +245,14 @@ object CadastroFuncionario: TCadastroFuncionario
           '1'
           '0')
       end
-      object cancelarFuncionarioBtn: TButton
+      object btnCancelarRegistro: TButton
         Left = 168
         Top = 368
         Width = 105
         Height = 33
         Caption = 'Cancelar'
         TabOrder = 8
-        OnClick = cancelarFuncionarioBtnClick
+        OnClick = btnCancelarRegistroClick
       end
       object Panel1: TPanel
         Left = 232
@@ -226,15 +269,15 @@ object CadastroFuncionario: TCadastroFuncionario
         TabOrder = 9
         Visible = False
         StyleElements = []
-        object Label8: TLabel
+        object lblSalario: TLabel
           Left = 8
           Top = 16
           Width = 44
           Height = 13
           Caption = 'SALARIO'
-          FocusControl = SalarioEdt
+          FocusControl = edtSalario
         end
-        object SalarioEdt: TDBEdit
+        object edtSalario: TDBEdit
           Left = 8
           Top = 35
           Width = 134
@@ -244,8 +287,8 @@ object CadastroFuncionario: TCadastroFuncionario
           TabOrder = 0
         end
       end
-      object DBGrid2: TDBGrid
-        Left = 232
+      object gridSalarios: TDBGrid
+        Left = 240
         Top = 240
         Width = 289
         Height = 97
@@ -300,6 +343,11 @@ object CadastroFuncionario: TCadastroFuncionario
       Required = True
       EditMask = '!99/99/0000;1;_'
     end
+    object QueryFuncionarioCARGO: TIntegerField
+      FieldName = 'CARGO'
+      Origin = 'CARGO'
+      Required = True
+    end
     object QueryFuncionarioNOME_CARGO: TStringField
       FieldKind = fkLookup
       FieldName = 'NOME CARGO'
@@ -323,12 +371,6 @@ object CadastroFuncionario: TCadastroFuncionario
       Origin = 'EMAIL'
       Required = True
       Size = 100
-    end
-    object QueryFuncionarioCARGO: TIntegerField
-      FieldName = 'CARGO'
-      Origin = 'CARGO'
-      Required = True
-      Visible = False
     end
   end
   object DtsCargos2: TDataSource

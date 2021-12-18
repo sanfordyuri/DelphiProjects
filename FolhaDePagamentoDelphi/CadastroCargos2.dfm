@@ -25,7 +25,7 @@ object CadastroCargos: TCadastroCargos
     OnChange = PgControlChange
     object Cargos: TTabSheet
       Caption = 'Cargos'
-      object DBGrid1: TDBGrid
+      object GridCargos: TDBGrid
         Left = 0
         Top = 0
         Width = 598
@@ -38,56 +38,68 @@ object CadastroCargos: TCadastroCargos
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
-        OnDblClick = DBGrid1DblClick
+        OnDblClick = GridCargosDblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            ReadOnly = True
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Visible = True
+          end>
       end
-      object addCargoBtn: TButton
+      object btnAddCargo: TButton
         Left = 19
         Top = 386
         Width = 100
         Height = 40
         Caption = 'Adicionar '
         TabOrder = 1
-        OnClick = addCargoBtnClick
+        OnClick = btnAddCargoClick
       end
-      object removeCargosbtn: TButton
-        Left = 133
-        Top = 385
+      object btnRemoverCargo: TButton
+        Left = 125
+        Top = 393
         Width = 100
         Height = 41
         Caption = 'Remover'
         TabOrder = 2
-        OnClick = removeCargosbtnClick
+        OnClick = btnRemoverCargoClick
       end
-      object CargosSalvarBtn: TButton
+      object btnSalvarCargo: TButton
         Left = 490
         Top = 385
         Width = 100
         Height = 41
         Caption = 'Salvar'
         TabOrder = 3
-        OnClick = CargosSalvarBtnClick
+        OnClick = btnSalvarCargoClick
       end
     end
     object Registro: TTabSheet
       Caption = 'Registro'
       ImageIndex = 1
-      object Label1: TLabel
+      object lblCodigo: TLabel
         Left = 27
         Top = 24
         Width = 41
         Height = 13
         Caption = 'CODIGO'
-        FocusControl = DBCodigoEdt
+        FocusControl = edtCodigo
       end
-      object Label2: TLabel
+      object lblNome: TLabel
         Left = 27
-        Top = 80
+        Top = 77
         Width = 29
         Height = 13
         Caption = 'NOME'
-        FocusControl = DBNomeEdt
+        FocusControl = edtNome
       end
-      object DBCodigoEdt: TDBEdit
+      object edtCodigo: TDBEdit
         Left = 27
         Top = 40
         Width = 134
@@ -97,7 +109,7 @@ object CadastroCargos: TCadastroCargos
         Enabled = False
         TabOrder = 0
       end
-      object DBNomeEdt: TDBEdit
+      object edtNome: TDBEdit
         Left = 27
         Top = 96
         Width = 198
@@ -106,23 +118,23 @@ object CadastroCargos: TCadastroCargos
         DataSource = DtsCargos
         TabOrder = 1
       end
-      object salvarRegistroBtn: TButton
+      object btnSalvarRegistro: TButton
         Left = 27
         Top = 150
         Width = 100
         Height = 39
         Caption = 'Salvar'
         TabOrder = 2
-        OnClick = salvarRegistroBtnClick
+        OnClick = btnSalvarRegistroClick
       end
-      object cancelarCargosBtn: TButton
+      object btnCancelarRegistro: TButton
         Left = 150
         Top = 150
         Width = 100
         Height = 39
         Caption = 'Cancelar'
         TabOrder = 3
-        OnClick = cancelarCargosBtnClick
+        OnClick = btnCancelarRegistroClick
       end
     end
   end

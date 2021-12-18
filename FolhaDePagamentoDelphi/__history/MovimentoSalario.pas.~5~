@@ -1,0 +1,133 @@
+unit MovimentoSalario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Conexao, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, System.UITypes;
+
+type
+  TMovimentoSalarios = class(TForm)
+    DtsSalario: TDataSource;
+    QuerySalario: TFDQuery;
+    QuerySalarioFUNCIONARIO: TIntegerField;
+    QuerySalarioSALARIO: TSingleField;
+    QuerySalarioDATA: TSQLTimeStampField;
+    Label2: TLabel;
+    EdtPercentual: TDBEdit;
+    MovimentoSalarioAdicionarBtn: TButton;
+    QueryAuxiliar: TFDQuery;
+    DtsAuxiliar: TDataSource;
+    lblCargo: TLabel;
+    LkpCargo: TDBLookupComboBox;
+    lblFuncionario: TLabel;
+    LkpFuncionario: TDBLookupComboBox;
+    QueryCargos: TFDQuery;
+    DtsCargos: TDataSource;
+    QueryFuncionarios: TFDQuery;
+    DtsFuncionarios: TDataSource;
+    EdtDataRef: TMaskEdit;
+    Label1: TLabel;
+    QueryFuncionariosSelecionados: TFDQuery;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure MovimentoSalarioAdicionarBtnClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MovimentoSalarios: TMovimentoSalarios;
+
+implementation
+
+{$R *.dfm}
+
+procedure TMovimentoSalarios.FormCreate(Sender: TObject);
+begin
+  QuerySalario.Open;
+  QueryCargos.Open;
+  QueryFuncionarios.Open;
+  QuerySalario.Append;
+
+  QuerySalarioDATA.AsDateTime := Now;
+end;
+
+procedure TMovimentoSalarios.FormDestroy(Sender: TObject);
+begin
+  QuerySalario.Close;
+  QueryAuxiliar.Close;
+end;
+
+
+
+procedure TMovimentoSalarios.MovimentoSalarioAdicionarBtnClick(Sender: TObject);
+var
+  Data: TDateTime;
+begin
+
+  Data := StrToDate(EdtDataRef.Text);
+
+  QueryAuxiliar.SQL.Text := 'DELETE FROM TB_SALARIOS WHERE DATA = :DATA';
+  QueryAuxiliar.ParamByName('DATA').AsDateTime := Data;
+  QueryAuxiliar.ExecSQL;
+
+  QueryFuncionariosSelecionados.Close;
+
+  QueryFuncionariosSelecionados.SQL.Text := 'SELECT F.CODIGO, FS.SALARIO '+
+    'FROM TB_FUNCIONARIO F '+
+    'INNER JOIN TB_SALARIOS FS ON(FS.FUNCIONARIO = F.CODIGO) '+
+    'WHERE F.STATUS = 1 '+
+    'AND FS.DATA = (SELECT MAX(FS2.DATA) FROM TB_SALARIOS FS2 WHERE FS2.FUNCIONARIO = F.CODIGO) ';
+
+  if (VarToStr(LkpCargo.KeyValue) <> '') then
+    begin
+      QueryFuncionariosSelecionados.SQL.Text := QueryFuncionariosSelecionados.SQL.Text + ' AND F.CARGO = ' + VarToStr(LkpCargo.KeyValue);
+      LkpFuncionario.KeyValue := null;
+    end
+  else if VarToStr(LkpFuncionario.KeyValue) <> '' then
+    QueryFuncionariosSelecionados.SQL.Text := QueryFuncionariosSelecionados.Text + ' AND F.CODIGO = ' + VarToStr(LkpFuncionario.KeyValue);
+
+
+  QueryFuncionariosSelecionados.Open;
+
+  while QueryFuncionariosSelecionados.Eof do
+  begin
+    QueryAuxiliar.SQL.Text := 'INSERT INTO TB_SALARIOS(DATA, FUNCIONARIO, SALARIO) '+
+                       'VALUES (:DATA_HORA, :COD_FUNCIONARIO, :SALARIO)';
+    QueryAuxiliar.ParamByName('DATA_HORA').AsDateTime := Data;
+    QueryAuxiliar.ParamByName('COD_FUNCIONARIO').AsInteger := QueryFuncionariosSelecionados.FieldByName('CODIGO').AsInteger;
+    QueryAuxiliar.ParamByName('SALARIO').AsFloat := QueryFuncionariosSelecionados.FieldByName('SALARIO').AsFloat * (1 + (StrToFloat(EdtPercentual.Text) / 100));
+    QueryAuxiliar.ExecSQL;
+
+    QueryFuncionariosSelecionados.Next;
+  end;
+
+  if QueryFuncionariosSelecionados.IsEmpty then
+    ShowMessage('Nenhuma informação processada.')
+  else
+    ShowMessage('Salários processados.');
+
+//    case MessageDlg('Confirme que deseja adicionar um registro de salário.', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbOK, TMsgDlgBtn.mbCancel], 0) of
+//    mrOk:
+//      begin
+//        QuerySalario.Post;
+//        QueryCargos.Close;
+//        QueryFuncionarios.Close;
+//        QueryAuxiliar.Refresh;
+//      end;
+//    mrCancel:
+//      begin
+//        ShowMessage('Operação cancelada.')
+//      end
+//  end;
+
+
+end;
+end.

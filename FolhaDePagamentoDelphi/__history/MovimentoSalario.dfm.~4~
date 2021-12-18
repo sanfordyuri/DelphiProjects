@@ -1,0 +1,166 @@
+object MovimentoSalarios: TMovimentoSalarios
+  Left = 0
+  Top = 0
+  Caption = 'MovimentoSalarios'
+  ClientHeight = 322
+  ClientWidth = 577
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label2: TLabel
+    Left = 40
+    Top = 120
+    Width = 51
+    Height = 13
+    Caption = 'Percentual'
+    FocusControl = EdtPercentual
+  end
+  object lblCargo: TLabel
+    Left = 40
+    Top = 24
+    Width = 29
+    Height = 13
+    Caption = 'Cargo'
+  end
+  object lblFuncionario: TLabel
+    Left = 40
+    Top = 72
+    Width = 55
+    Height = 13
+    Caption = 'Funcion'#225'rio'
+  end
+  object Label1: TLabel
+    Left = 40
+    Top = 165
+    Width = 78
+    Height = 13
+    Caption = 'Data Refer'#234'ncia'
+    FocusControl = EdtPercentual
+  end
+  object EdtPercentual: TDBEdit
+    Left = 40
+    Top = 136
+    Width = 134
+    Height = 21
+    DataField = 'SALARIO'
+    DataSource = DtsSalario
+    TabOrder = 0
+  end
+  object MovimentoSalarioAdicionarBtn: TButton
+    Left = 40
+    Top = 242
+    Width = 100
+    Height = 40
+    Caption = 'Adicionar'
+    TabOrder = 1
+    OnClick = MovimentoSalarioAdicionarBtnClick
+  end
+  object LkpCargo: TDBLookupComboBox
+    Left = 40
+    Top = 43
+    Width = 369
+    Height = 21
+    KeyField = 'NOME'
+    ListField = 'NOME'
+    ListSource = DtsCargos
+    NullValueKey = 16462
+    TabOrder = 2
+  end
+  object LkpFuncionario: TDBLookupComboBox
+    Left = 40
+    Top = 93
+    Width = 369
+    Height = 21
+    KeyField = 'NOME'
+    ListSource = DtsFuncionarios
+    NullValueKey = 16462
+    TabOrder = 3
+  end
+  object EdtDataRef: TMaskEdit
+    Left = 40
+    Top = 184
+    Width = 118
+    Height = 21
+    EditMask = '!99/99/0000;1;_'
+    MaxLength = 10
+    TabOrder = 4
+    Text = '  /  /    '
+  end
+  object DtsSalario: TDataSource
+    DataSet = QuerySalario
+    Left = 496
+    Top = 192
+  end
+  object QuerySalario: TFDQuery
+    IndexFieldNames = 'FUNCIONARIO'
+    MasterFields = 'CODIGO'
+    Connection = DM.Connection
+    SQL.Strings = (
+      'SELECT * FROM TB_SALARIOS ORDER BY DATA ASC')
+    Left = 440
+    Top = 152
+    object QuerySalarioFUNCIONARIO: TIntegerField
+      FieldName = 'FUNCIONARIO'
+      Origin = 'FUNCIONARIO'
+      Required = True
+      Visible = False
+    end
+    object QuerySalarioSALARIO: TSingleField
+      FieldName = 'SALARIO'
+      Origin = 'SALARIO'
+      Required = True
+    end
+    object QuerySalarioDATA: TSQLTimeStampField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+      Required = True
+    end
+  end
+  object QueryAuxiliar: TFDQuery
+    Connection = DM.Connection
+    Left = 520
+    Top = 16
+  end
+  object DtsAuxiliar: TDataSource
+    DataSet = QueryAuxiliar
+    Left = 344
+    Top = 176
+  end
+  object QueryCargos: TFDQuery
+    Connection = DM.Connection
+    SQL.Strings = (
+      'select * from tb_cargo')
+    Left = 448
+    Top = 107
+  end
+  object DtsCargos: TDataSource
+    DataSet = QueryCargos
+    Left = 448
+    Top = 59
+  end
+  object QueryFuncionarios: TFDQuery
+    Connection = DM.Connection
+    SQL.Strings = (
+      'SELECT * FROM TB_FUNCIONARIO ORDER BY CODIGO ASC')
+    Left = 488
+    Top = 107
+  end
+  object DtsFuncionarios: TDataSource
+    DataSet = QueryFuncionarios
+    Left = 488
+    Top = 59
+  end
+  object QueryFuncionariosSelecionados: TFDQuery
+    Connection = DM.Connection
+    Left = 360
+    Top = 264
+  end
+end

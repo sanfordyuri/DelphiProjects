@@ -24,28 +24,28 @@ type
     QueryFuncionarioSTATUS: TStringField;
     DtsCargos2: TDataSource;
     QueryCargos2: TFDQuery;
-    PageControl1: TPageControl;
+    PgControl: TPageControl;
     Funcionarios: TTabSheet;
-    DBGrid1: TDBGrid;
-    addFuncionarioBtn: TButton;
-    removeFuncionariobtn: TButton;
-    SalvarFuncionarioBtn: TButton;
+    GridFuncionarios: TDBGrid;
+    btnAddFuncionario: TButton;
+    btnRemoverFuncionario: TButton;
+    btnSalvarFuncionario: TButton;
     Registro: TTabSheet;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
-    DBEdit5: TDBEdit;
-    DBEdit6: TDBEdit;
-    salvarFuncionarioRegisBtn: TButton;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBRadioGroup1: TDBRadioGroup;
-    cancelarFuncionarioBtn: TButton;
+    lblCodigo: TLabel;
+    lblNome: TLabel;
+    lblNascimento: TLabel;
+    lblCargo: TLabel;
+    lblContato: TLabel;
+    lblEmail: TLabel;
+    edtCodigo: TDBEdit;
+    edtNome: TDBEdit;
+    edtNascimento: TDBEdit;
+    edtContato: TDBEdit;
+    edtEmail: TDBEdit;
+    btnSalvarRegistro: TButton;
+    edtCargo: TDBLookupComboBox;
+    rgFuncionario: TDBRadioGroup;
+    btnCancelarRegistro: TButton;
     QueryCargos2CODIGO: TIntegerField;
     QueryCargos2NOME: TStringField;
     QueryFuncionarioNOME_CARGO: TStringField;
@@ -53,22 +53,22 @@ type
     Panel1: TPanel;
     QuerySalario: TFDQuery;
     DtsSalario: TDataSource;
-    Label8: TLabel;
-    SalarioEdt: TDBEdit;
-    DBGrid2: TDBGrid;
+    lblSalario: TLabel;
+    edtSalario: TDBEdit;
+    gridSalarios: TDBGrid;
     QuerySalarioFUNCIONARIO: TIntegerField;
     QuerySalarioSALARIO: TSingleField;
     QuerySalarioDATA: TSQLTimeStampField;
-    procedure addFuncionarioBtnClick(Sender: TObject);
-    procedure salvarFuncionarioRegisBtnClick(Sender: TObject);
+    procedure btnAddFuncionarioClick(Sender: TObject);
+    procedure btnSalvarRegistroClick(Sender: TObject);
     procedure atualizarCodigo(Sender: TObject);
-    procedure cancelarFuncionarioBtnClick(Sender: TObject);
-    procedure removeFuncionariobtnClick(Sender: TObject);
-    procedure DBGrid1DblClick(Sender: TObject);
-    procedure SalvarFuncionarioBtnClick(Sender: TObject);
+    procedure btnCancelarRegistroClick(Sender: TObject);
+    procedure btnRemoverFuncionarioClick(Sender: TObject);
+    procedure GridFuncionariosDblClick(Sender: TObject);
+    procedure btnSalvarFuncionarioClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure PageControl1Change(Sender: TObject);
+    procedure PgControlChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,11 +83,11 @@ implementation
 
 {$R *.dfm}
 
-procedure TCadastroFuncionario.addFuncionarioBtnClick(Sender: TObject);
+procedure TCadastroFuncionario.btnAddFuncionarioClick(Sender: TObject);
 begin
   atualizarCodigo(Self);
   Sleep(100);
-  PageControl1.ActivePage := Registro;
+  PgControl.ActivePage := Registro;
   Panel1.Visible := true;
 
 end;
@@ -98,7 +98,7 @@ begin
     begin
       QueryFuncionario.Append;
       CodigoFun := 1;
-      DBEdit1.Text := IntToStr(CodigoFun);
+      edtCodigo.Text := IntToStr(CodigoFun);
       Exit;
     end;
   if not QueryFuncionario.IsEmpty then
@@ -106,21 +106,21 @@ begin
       QueryFuncionario.Last;
       CodigoFun :=  QueryFuncionario.FieldByName('CODIGO').Value + 1;
       QueryFuncionario.Append;
-      DBEdit1.Text := IntToStr(CodigoFun);
+      edtCodigo.Text := IntToStr(CodigoFun);
     end;
 
 end;
 
-procedure TCadastroFuncionario.cancelarFuncionarioBtnClick(Sender: TObject);
+procedure TCadastroFuncionario.btnCancelarRegistroClick(Sender: TObject);
 begin
   QueryFuncionario.Cancel;
   ShowMessage('Operação de adição cancelada');
-  PageControl1.ActivePage := Funcionarios;
-  SalarioEdt.Text := '';
+  PgControl.ActivePage := Funcionarios;
+  edtSalario.Text := '';
   Panel1.Visible := false;
 end;
 
-procedure TCadastroFuncionario.DBGrid1DblClick(Sender: TObject);
+procedure TCadastroFuncionario.GridFuncionariosDblClick(Sender: TObject);
 begin
     if not QueryFuncionario.IsEmpty then
     begin
@@ -133,7 +133,7 @@ begin
   QueryCargos2.Open;
   QueryFuncionario.Open;
   QuerySalario.Open;
-  PageControl1.ActivePage := Funcionarios;
+  PgControl.ActivePage := Funcionarios;
 end;
 
 procedure TCadastroFuncionario.FormDestroy(Sender: TObject);
@@ -143,22 +143,23 @@ begin
   QuerySalario.Close;
 end;
 
-procedure TCadastroFuncionario.PageControl1Change(Sender: TObject);
+procedure TCadastroFuncionario.PgControlChange(Sender: TObject);
 begin
-  if (PageControl1.ActivePage = Funcionarios) and (QueryFuncionario.State in [dsInsert, dsEdit]) then
+  if (PgControl.ActivePage = Funcionarios) and (QueryFuncionario.State in [dsInsert, dsEdit]) then
     begin
         QueryFuncionario.Cancel;
-        SalarioEdt.Text := '';
+        edtSalario.Text := '';
         Panel1.Visible := false;
     end;
 
 end;
 
-procedure TCadastroFuncionario.removeFuncionariobtnClick(Sender: TObject);
+procedure TCadastroFuncionario.btnRemoverFuncionarioClick(Sender: TObject);
 begin
   if not QueryFuncionario.IsEmpty then
     begin
       QueryFuncionario.Delete;
+      atualizarCodigo(self);
     end
   else
     begin
@@ -166,15 +167,15 @@ begin
     end;
 end;
 
-procedure TCadastroFuncionario.SalvarFuncionarioBtnClick(Sender: TObject);
+procedure TCadastroFuncionario.btnSalvarFuncionarioClick(Sender: TObject);
 begin
   QueryFuncionario.Post;
-  SalarioEdt.Text := '';
+  edtSalario.Text := '';
   Panel1.Visible := false;
   ShowMessage('Funcionário Atualizado com sucesso.');
 end;
 
-procedure TCadastroFuncionario.salvarFuncionarioRegisBtnClick(Sender: TObject);
+procedure TCadastroFuncionario.btnSalvarRegistroClick(Sender: TObject);
   var
     Salario: Currency;
 begin
@@ -182,22 +183,21 @@ begin
     begin
       QueryFuncionario.Post;
 
-      //Salario := StrToFloat(SalarioEdt.Text);
-      Salario := StrToFloatDef(SalarioEdt.Text, 0);
+      Salario := StrToFloatDef(edtSalario.Text, 0);
       if (Salario > 0) then
         begin
           QuerySalario.Append;
           QuerySalarioFUNCIONARIO.AsString := QueryFuncionarioCODIGO.AsString;
-          QuerySalarioDATA.AsDateTime := Now;
+          QuerySalarioDATA.AsDateTime := Trunc(Now);
           QuerySalarioSALARIO.AsFloat := Salario;
           QuerySalario.Post;
           Panel1.Visible := false;
-          SalarioEdt.Text := '';
+          edtSalario.Text := '';
         end;
 
     end;
 
-    PageControl1.ActivePage := Funcionarios;
+    PgControl.ActivePage := Funcionarios;
 end;
 
 end.

@@ -118,6 +118,44 @@
             <Form>TCadastroEvento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="CadastroInss.pas">
+            <Form>TCadastroInss</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CadastroIR.pas">
+            <Form>CadastroIrrf</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MovimentoSalario.pas">
+            <Form>MovimentoSalarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MovimentoEventos.pas">
+            <Form>MovimentoEvento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="RelFuncionarios.pas">
+            <Form>RelFunCfg</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="RelFunForm.pas">
+            <Form>RelFunForms</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MovimentoFolha.pas">
+            <Form>MovFolhaDePagamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CalcInss.pas"/>
+        <DCCReference Include="CalcIrrf.pas"/>
+        <DCCReference Include="RelFolha.pas">
+            <Form>RelFolhaCfg</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="RelFolhaForm.pas">
+            <Form>RelFolhasForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -921,6 +959,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

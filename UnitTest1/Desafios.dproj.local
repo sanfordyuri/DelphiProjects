@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2021/12/23 16:22:27.197,=D:\Delphi-Projects\UnitTest1\Unit1.pas</Transaction>
+    <Transaction>2021/12/23 16:22:34.887,D:\Delphi-Projects\UnitTest1\Desafio01.pas=D:\Delphi-Projects\UnitTest1\Unit1.pas</Transaction>
+    <Transaction>2021/12/23 16:22:40.739,D:\Delphi-Projects\UnitTest1\Funcoes.pas=D:\Delphi-Projects\UnitTest1\Desafio01.pas</Transaction>
+    <Transaction>2021/12/23 16:24:24.933,D:\Delphi-Projects\UnitTest1\Desafio01.pas=D:\Delphi-Projects\UnitTest1\Funcoes.pas</Transaction>
+    <Transaction>2021/12/23 16:29:34.608,=D:\Delphi-Projects\UnitTest1\TestDesafio01.pas</Transaction>
+    <Transaction>2021/12/23 16:51:33.723,D:\Delphi-Projects\UnitTest1\Desafios.dproj=D:\Delphi-Projects\UnitTest1\Desafios.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,29 @@
+﻿unit Desafio01;
+
+interface
+
+type
+
+  TFuncoes = class(TObject)
+    private
+    public
+      constructor Create;
+      destructor Destroy; override;
+  end;
+
+implementation
+
+{ TFuncoes }
+
+constructor TFuncoes.Create;
+begin
+
+end;
+
+destructor TFuncoes.Destroy;
+begin
+
+  inherited;
+end;
+
+end.

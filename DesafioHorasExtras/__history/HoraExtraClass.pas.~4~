@@ -47,9 +47,7 @@ begin
   else if DomingoOuFeriado = 0 then
     begin
       Result := 30 * (TempoEmMin/60) // 20 + (50% * 20)
-    end
-  else
-    Result := 0.0;
+    end;
 end;
 
 end.

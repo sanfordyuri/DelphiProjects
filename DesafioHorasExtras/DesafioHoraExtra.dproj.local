@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2022/01/06 17:03:39.641,=D:\Delphi-Projects\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 17:04:00.806,D:\Delphi-Projects\PrincipalForm.dfm=D:\Delphi-Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/01/06 17:04:00.806,D:\Delphi-Projects\PrincipalForm.pas=D:\Delphi-Projects\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 17:13:34.571,D:\Delphi-Projects\DesafioHorasExtras\PrincipalForm.pas=D:\Delphi-Projects\PrincipalForm.pas</Transaction>
+    <Transaction>2022/01/06 17:13:34.571,D:\Delphi-Projects\DesafioHorasExtras\PrincipalForm.dfm=D:\Delphi-Projects\PrincipalForm.dfm</Transaction>
+    <Transaction>2022/01/06 17:13:37.067,D:\Delphi-Projects\DesafioHorasExtras\Project1.dproj=D:\Delphi-Projects\Project1.dproj</Transaction>
+    <Transaction>2022/01/06 17:19:15.610,=D:\Delphi-Projects\DesafioHorasExtras\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 17:19:24.624,D:\Delphi-Projects\DesafioHorasExtras\HoraExtraClass.pas=D:\Delphi-Projects\DesafioHorasExtras\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 18:59:47.483,D:\Delphi-Projects\DesafioHorasExtras\DesafioHoraExtra.dproj=D:\Delphi-Projects\DesafioHorasExtras\Project1.dproj</Transaction>
+    <Transaction>2022/01/06 19:00:01.794,=D:\Delphi-Projects\DesafioHorasExtras\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 19:00:11.315,D:\Delphi-Projects\DesafioHorasExtras\HoraExtraListCkass.pas=D:\Delphi-Projects\DesafioHorasExtras\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 19:08:01.678,D:\Delphi-Projects\DesafioHorasExtras\HoraExtraListClass.pas=D:\Delphi-Projects\DesafioHorasExtras\HoraExtraListCkass.pas</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,76 @@
+object Principal: TPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Principal'
+  ClientHeight = 401
+  ClientWidth = 599
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object LblCodigo: TLabel
+    Left = 40
+    Top = 40
+    Width = 33
+    Height = 13
+    Caption = 'C'#243'digo'
+  end
+  object LblPeriodo: TLabel
+    Left = 40
+    Top = 101
+    Width = 36
+    Height = 13
+    Caption = 'Per'#237'odo'
+  end
+  object LblHorasExtras: TLabel
+    Left = 40
+    Top = 245
+    Width = 104
+    Height = 13
+    Caption = 'Total de Horas Extras'
+  end
+  object EdtCodigo: TEdit
+    Left = 40
+    Top = 59
+    Width = 121
+    Height = 21
+    TabOrder = 0
+  end
+  object EdtPeriodo: TMaskEdit
+    Left = 40
+    Top = 120
+    Width = 120
+    Height = 21
+    EditMask = '!99/0000;1;_'
+    MaxLength = 7
+    TabOrder = 1
+    Text = '  /    '
+  end
+  object RadioGroup: TRadioGroup
+    Left = 40
+    Top = 168
+    Width = 185
+    Height = 57
+    Caption = 'Domingo ou Feriado?'
+    Columns = 2
+    Items.Strings = (
+      'Sim'
+      'N'#227'o')
+    TabOrder = 2
+  end
+  object EdtHrsExtras: TMaskEdit
+    Left = 40
+    Top = 264
+    Width = 81
+    Height = 21
+    EditMask = '!90:00;1;_'
+    MaxLength = 5
+    TabOrder = 3
+    Text = '  :  '
+  end
+end

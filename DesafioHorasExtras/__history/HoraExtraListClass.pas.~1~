@@ -1,0 +1,58 @@
+unit HoraExtraListClass;
+
+interface
+uses Generics.Collections, HoraExtraClass;
+
+type
+  THoraExtraList = class(TObjectList<THoraExtra>)
+    private
+    public
+      constructor Create;
+      destructor Destroy;override;
+      function valorTotalHorasExtrasCinquenta:Currency;
+      function valorTotalHorasExtrasCem:Currency;
+  end;
+
+implementation
+
+{ THoraExtraList }
+
+constructor THoraExtraList.Create;
+begin
+  inherited;
+
+end;
+
+destructor THoraExtraList.Destroy;
+begin
+
+  inherited;
+end;
+
+function THoraExtraList.valorTotalHorasExtrasCem: Currency;
+var
+  HoraExtraRef: THoraExtra;
+  Total: Currency;
+begin
+  for HoraExtraRef in Self do
+    begin
+      if HoraExtraRef.DomingoOuFeriado = 1 then
+        Total := Total + HoraExtraRef.valorQueSeraPago;
+    end;
+  Result := Total;
+end;
+
+function THoraExtraList.valorTotalHorasExtrasCinquenta: Currency;
+var
+  HoraExtraRef: THoraExtra;
+  Total: Currency;
+begin
+  for HoraExtraRef in Self do
+    begin
+      if HoraExtraRef.DomingoOuFeriado = 0 then
+        Total := Total + HoraExtraRef.valorQueSeraPago;
+    end;
+  Result := Total;
+end;
+
+end.

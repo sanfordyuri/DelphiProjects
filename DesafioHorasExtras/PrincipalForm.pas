@@ -75,9 +75,10 @@ begin
   MemoLog.Clear;
   for ChaveCodigo in BancoDeHoras.Keys do
     begin
+      BancoDeHoras.Items[ChaveCodigo].PuxarValores;
       MemoLog.Lines.Add('Funcionário = ' + ChaveCodigo.ToString);
-      MemoLog.Lines.Add(' Total de 50% = ' + BancoDeHoras.Items[ChaveCodigo].TotalHorasExtrasCinquenta.ToString + ' Hrs');
-      MemoLog.Lines.Add(' Total de 100% = ' + BancoDeHoras.Items[ChaveCodigo].TotalHorasExtrasCem.toString + ' Hrs');
+      MemoLog.Lines.Add(' Total de 50% = ' + BancoDeHoras.Items[ChaveCodigo].TotalHorasExtraCinquenta.ToString + ' Hrs');
+      MemoLog.Lines.Add(' Total de 100% = ' + BancoDeHoras.Items[ChaveCodigo].TotalHorasExtraCem.toString + ' Hrs');
       MemoLog.Lines.Add(' Total a ser Pago R$ ' + CurrToStr(BancoDeHoras.Items[ChaveCodigo].TotalValorAPagar));
       for HoraExtraRef in BancoDeHoras.Items[ChaveCodigo] do
         begin
